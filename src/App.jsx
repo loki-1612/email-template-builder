@@ -1,35 +1,65 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React from 'react';
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+import { useState } from "react";
+
+export default function App() {
+  const [blocks] = useState([
+    {
+      id: 1,
+      type: "text",
+      content: "Welcome to our newsletter",
+    },
+    {
+      id: 2,
+      type: "image",
+      content: "https://via.placeholder.com/600x200",
+    },
+    {
+      id: 3,
+      type: "button",
+      content: "Read More",
+    },
+  ]);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="min-h-screen bg-gray-100 p-8">
+      <div className="max-w-3xl mx-auto bg-white border border-gray-300 rounded-lg p-6">
+        <h1 className="text-2xl font-bold text-gray-900 mb-2">
+          AI Email Template Builder
+        </h1>
 
-export default App
+        <p className="text-gray-700 mb-6">
+          Below is the block data stored in React state.
+        </p>
+
+        <div className="space-y-4">
+          {blocks.map((block) => (
+            <div
+              key={block.id}
+              className="bg-gray-50 border border-gray-200 rounded-md p-4"
+            >
+              <div className="mb-2">
+                <span className="text-sm font-semibold text-gray-600">
+                  Block Type:
+                </span>
+                <span className="ml-2 text-gray-800 capitalize">
+                  {block.type}
+                </span>
+              </div>
+
+              <div>
+                <span className="text-sm font-semibold text-gray-600">
+                  Content:
+                </span>
+                <p className="mt-1 text-gray-800 break-words">
+                  {block.content}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
