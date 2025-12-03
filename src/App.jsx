@@ -1,62 +1,42 @@
 import React from 'react';
 import './App.css'
-
 import { useState } from "react";
+import RenderBlock from "./components/RenderBlock";
 
 export default function App() {
-  const [blocks] = useState([
+  const blocks = [
     {
       id: 1,
       type: "text",
-      content: "Welcome to our newsletter",
+      content: "Welcome to our newsletter. Stay updated with our latest news.",
     },
     {
       id: 2,
       type: "image",
-      content: "https://via.placeholder.com/600x200",
+      content: "https://picsum.photos/seed/email/600x240",
     },
     {
       id: 3,
       type: "button",
       content: "Read More",
     },
-  ]);
+  ];
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8">
-      <div className="max-w-3xl mx-auto bg-white border border-gray-300 rounded-lg p-6">
-        <h1 className="text-2xl font-bold text-gray-900 mb-2">
-          AI Email Template Builder
-        </h1>
-
-        <p className="text-gray-700 mb-6">
-          Below is the block data stored in React state.
-        </p>
+    <div className="min-h-screen bg-slate-100 flex justify-center items-start p-8">
+      <div className="w-full max-w-lg bg-white rounded-xl shadow-md p-6 space-y-6">
+        <div>
+          <h1 className="text-2xl font-semibold text-slate-900 mb-4">
+            AI Email Template Builder
+          </h1>
+          <p className="text-slate-500 text-sm mt-1">
+            Preview how your email content will look
+          </p>
+        </div>
 
         <div className="space-y-4">
           {blocks.map((block) => (
-            <div
-              key={block.id}
-              className="bg-gray-50 border border-gray-200 rounded-md p-4"
-            >
-              <div className="mb-2">
-                <span className="text-sm font-semibold text-gray-600">
-                  Block Type:
-                </span>
-                <span className="ml-2 text-gray-800 capitalize">
-                  {block.type}
-                </span>
-              </div>
-
-              <div>
-                <span className="text-sm font-semibold text-gray-600">
-                  Content:
-                </span>
-                <p className="mt-1 text-gray-800 break-words">
-                  {block.content}
-                </p>
-              </div>
-            </div>
+            <RenderBlock key={block.id} block={block} />
           ))}
         </div>
       </div>
