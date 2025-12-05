@@ -7,6 +7,7 @@ export default function Preview({ blocks }) {
         <h1 className="text-xl font-semibold text-gray-800">
           Email Preview
         </h1>
+        
 
         {blocks.length === 0 && (
           <p className="text-gray-500 text-sm">
