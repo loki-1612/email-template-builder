@@ -26,15 +26,28 @@ export default function App() {
     JSON.parse(localStorage.getItem("emailTemplates")) || []
   );
 
+  // ===== Day 10: Reorder block =====
+  const [dragIndex, setDragIndex] = useState(null);
+
   // ===== Day 6: Update block content =====
   const updateBlock = (value) => {
     if (!selectedBlockId) return;
 
     setBlocks((prev) =>
-      prev.map((b) =>
-        b.id === selectedBlockId ? { ...b, content: value } : b
-      )
+      prev.map((b) => (b.id === selectedBlockId ? { ...b, content: value } : b))
     );
+  };
+
+  // ===== Day 10: Reorder block =====
+  const moveBlock = (from, to) => {
+    if (from === to) return;
+
+    setBlocks((prev) => {
+      const updated = [...prev];
+      const [moved] = updated.splice(from, 1);
+      updated.splice(to, 0, moved);
+      return updated;
+    });
   };
 
   // ===== Day 9: Save template =====
@@ -95,7 +108,13 @@ export default function App() {
 
         {/* Preview */}
         <div className="col-span-6">
-          <Preview blocks={blocks} onSelect={setSelectedBlockId} />
+          <Preview
+            blocks={blocks}
+            onSelect={setSelectedBlockId}
+            dragIndex={dragIndex}
+            setDragIndex={setDragIndex}
+            moveBlock={moveBlock}
+          />
         </div>
 
         {/* Editor */}
