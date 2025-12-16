@@ -1,8 +1,6 @@
-import React from "react";
 import { motion } from "framer-motion";
 
 export default function Sidebar({ onAdd }) {
-
   const createBlock = (type, content) => ({
     id: Date.now() + Math.random(),
     type,

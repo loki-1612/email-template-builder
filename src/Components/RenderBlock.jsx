@@ -1,4 +1,3 @@
-import React from "react";
 
 export default function RenderBlock({ block }) {
   if (!block) return null;
