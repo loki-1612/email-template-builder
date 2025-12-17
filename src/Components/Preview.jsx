@@ -10,9 +10,11 @@ export default function Preview({
   deleteBlock,
 }) {
   return (
-    <div className="bg-slate-100 p-6 rounded-xl h-full">
-      <div className="bg-white rounded-xl shadow-md border border-slate-200 p-6 space-y-4">
-        <h2 className="text-lg font-semibold text-slate-800">Email Preview</h2>
+    <div className="bg-slate-100 p-4 sm:p-6 rounded-xl h-full max-h-[60vh] sm:max-h-[70vh] overflow-y-auto">
+      <div className="bg-white rounded-xl shadow-md border border-slate-200 p-4 sm:p-6 space-y-4">
+        <h2 className="text-lg font-semibold text-slate-800 text-center sm:text-left">
+          Email Preview
+        </h2>
 
         {blocks.length === 0 && (
           <div className="border border-dashed border-slate-300 rounded-lg p-6 text-center text-slate-500 text-sm">
@@ -48,10 +50,10 @@ export default function Preview({
                 deleteBlock(block.id);
               }}
               className="absolute top-2 right-2 z-10 opacity-0 group-hover:opacity-100
-  bg-white border border-slate-300 text-slate-500
-  rounded-full w-7 h-7 flex items-center justify-center
-  shadow-sm hover:text-red-600 hover:border-red-300 hover:bg-red-50
-  transition"
+                bg-white border border-slate-300 text-slate-500
+                rounded-full w-7 h-7 flex items-center justify-center
+                shadow-sm hover:text-red-600 hover:border-red-300 hover:bg-red-50
+                transition"
               title="Delete block"
             >
               <svg
@@ -70,35 +72,33 @@ export default function Preview({
             </motion.button>
           );
 
-          // TEXT BLOCK
+          /* ---------- TEXT BLOCK ---------- */
           if (block.type === "text") {
             return (
               <motion.div
                 key={block.id}
                 {...wrapperProps}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.97 }}
-                transition={{ duration: 0.15 }}
-                className={`${wrapperProps.className} p-3 text-slate-700`}
+                whileHover={{ scale: 1.01 }}
+                whileTap={{ scale: 0.98 }}
+                className="p-3 text-slate-700"
               >
                 {DeleteButton}
-                <p className="whitespace-pre-wrap">{block.content}</p>
+                <p className="whitespace-pre-wrap break-words text-sm sm:text-base">
+                  {block.content}
+                </p>
               </motion.div>
             );
           }
 
-          // IMAGE BLOCK
+          /* ---------- IMAGE BLOCK ---------- */
           if (block.type === "image") {
             return (
               <motion.div
                 key={block.id}
                 {...wrapperProps}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.97 }}
-                transition={{ duration: 0.15 }}
-                className={`${
-                  wrapperProps.className
-                } h-32 flex items-center justify-center text-sm
+                whileHover={{ scale: 1.01 }}
+                whileTap={{ scale: 0.98 }}
+                className={`h-32 sm:h-40 flex items-center justify-center text-sm
                   ${
                     isSelected
                       ? "bg-blue-50"
@@ -112,20 +112,21 @@ export default function Preview({
             );
           }
 
-          // BUTTON BLOCK
+          /* ---------- BUTTON BLOCK (RESPONSIVE FIX) ---------- */
           if (block.type === "button") {
             return (
               <motion.div
                 key={block.id}
                 {...wrapperProps}
-                className={`${wrapperProps.className} flex justify-center p-3`}
+                className="relative flex justify-center px-2"
               >
                 {DeleteButton}
+
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  transition={{ duration: 0.15 }}
-                  className={`px-4 py-2 rounded-lg font-medium shadow-sm
+                  className={`w-full sm:w-auto max-w-full sm:max-w-xs
+                    px-6 py-2.5 rounded-lg font-medium shadow-sm text-center
                     ${
                       isSelected
                         ? "bg-blue-600 text-white"

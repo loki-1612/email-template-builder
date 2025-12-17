@@ -96,7 +96,7 @@ export default function App() {
         {/* Header */}
         <div className="flex justify-between items-center bg-white rounded-xl shadow border p-4">
           <h1 className="text-2xl font-bold text-slate-800 tracking-tight">
-            AI Email Template Builder
+            Email Template Builder
           </h1>
 
           <button
@@ -111,14 +111,14 @@ export default function App() {
         </div>
 
         {/* Main Layout */}
-        <div className="grid grid-cols-12 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 lg:gap-6">
           {/* Sidebar */}
-          <div className="col-span-3">
+          <div className="col-span-1 md:col-span-3">
             <Sidebar onAdd={setBlocks} />
           </div>
 
           {/* Preview */}
-          <div className="col-span-6">
+          <div className="col-span-1 md:col-span-6">
             <Preview
               blocks={blocks}
               onSelect={setSelectedBlockId}
@@ -131,7 +131,7 @@ export default function App() {
           </div>
 
           {/* Editor */}
-          <div className="col-span-3">
+          <div className="col-span-1 md:col-span-3">
             <Editor block={selectedBlock} onUpdate={updateBlock} />
           </div>
         </div>

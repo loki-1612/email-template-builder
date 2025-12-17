@@ -1,36 +1,28 @@
-# AI Email Template Builder (Frontend Project)
+# Email Template Builder 🚀
 
-## 📌 Overview
-A frontend-only email template builder built using React and Tailwind CSS.
-Users can create, edit, preview, reorder, and export email templates.
+A responsive web application that allows users to visually build email templates using drag-and-drop blocks. Users can add text, images, and buttons, preview emails in real time, and export the final email as HTML.
 
-This project focuses on UI, state management, and user experience.
-
+## 🔗 Live Demo
+👉 https://ai-template-email-builder.vercel.app
 
 ## ✨ Features
-- Add text, image, and button blocks
-- Edit content in real time
-- Drag & drop block reordering
-- Email preview panel
-- Save and load templates using localStorage
+- Drag & drop email blocks (Text, Image, Button)
+- Real-time email preview
+- Delete & reorder blocks
+- Fully responsive (Mobile, Tablet, Desktop)
 - Export email as clean HTML
-- Sample-based AI content generation (frontend simulation)
-- Smooth UI interactions with Framer Motion
-
+- Smooth animations using Framer Motion
 
 ## 🛠 Tech Stack
-- React
+- React (Vite)
 - Tailwind CSS
 - Framer Motion
-- LocalStorage (for persistence)
+- JavaScript (ES6+)
+- Vercel (Deployment)
 
-
-## 🧠 AI Note
-AI generation is simulated using categorized sample texts.
-The architecture allows easy replacement with a real AI API later.
-
-
-## 🚀 How to Run
+## 📦 Installation
 ```bash
+git clone https://github.com/loki-1612/ai-template-email-builder.git
+cd ai-template-email-builder
 npm install
 npm run dev

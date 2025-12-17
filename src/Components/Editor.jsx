@@ -112,7 +112,7 @@ export default function Editor({ block, onUpdate }) {
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.25 }}
-      className="bg-white border border-slate-200 rounded-xl p-6 space-y-4 shadow-md"
+      className="bg-white border border-slate-200 rounded-xl p-6 space-y-4 shadow-md md:sticky md:top-6"
     >
       <h2 className="text-lg font-semibold text-slate-800">Edit Block</h2>
 
@@ -124,7 +124,7 @@ export default function Editor({ block, onUpdate }) {
             disabled={loading}
             onChange={(e) => onUpdate(e.target.value)}
             className="w-full min-h-[120px] resize-none rounded-xl
-              border border-slate-300 bg-slate-50 p-4 text-sm
+              border border-slate-300 bg-slate-50 p-4 text-sm sm:text-base px-3 sm:px-4 py-2
               focus:outline-none focus:ring-2 focus:ring-indigo-200
               focus:border-indigo-500"
           />
@@ -135,7 +135,7 @@ export default function Editor({ block, onUpdate }) {
               onClick={() => setOpen((p) => !p)}
               className="w-full flex items-center justify-between
                 rounded-xl border border-slate-300 bg-slate-50
-                px-4 py-2.5 text-sm shadow-sm
+                shadow-sm text-sm sm:text-base px-3 sm:px-4 py-2
                 focus:outline-none focus:ring-2 focus:ring-indigo-200"
             >
               <span className="capitalize">{category}</span>
@@ -210,8 +210,8 @@ export default function Editor({ block, onUpdate }) {
           type="text"
           value={block.content}
           onChange={(e) => onUpdate(e.target.value)}
-          className="w-full rounded-lg border p-2.5 text-sm
-            focus:outline-none focus:ring-2 focus:ring-indigo-200"
+          className="w-full rounded-lg border p-2.5
+            focus:outline-none focus:ring-2 focus:ring-indigo-200 text-sm sm:text-base px-3 sm:px-4 py-2"
           placeholder="Image URL"
         />
       )}
@@ -222,8 +222,8 @@ export default function Editor({ block, onUpdate }) {
           type="text"
           value={block.content}
           onChange={(e) => onUpdate(e.target.value)}
-          className="w-full rounded-lg border p-2.5 text-sm
-            focus:outline-none focus:ring-2 focus:ring-indigo-200"
+          className="w-full rounded-lg border p-2.5
+            focus:outline-none focus:ring-2 focus:ring-indigo-200 text-sm sm:text-base px-3 sm:px-4 py-2"
           placeholder="Button text"
         />
       )}
