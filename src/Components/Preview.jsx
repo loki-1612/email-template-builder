@@ -25,6 +25,15 @@ export default function Preview({
         {blocks.map((block, index) => {
           const isSelected = block.id === selectedBlockId;
 
+          const baseWrapperClass = `
+            relative group cursor-grab active:cursor-grabbing transition-all rounded-lg border
+            ${
+              isSelected
+                ? "bg-blue-50 border-blue-400 shadow-sm"
+                : "border-slate-200 hover:bg-slate-50"
+            }
+          `;
+
           const wrapperProps = {
             draggable: true,
             onDragStart: () => setDragIndex(index),
@@ -32,13 +41,6 @@ export default function Preview({
             onDrop: () => moveBlock(dragIndex, index),
             onClick: () => onSelect(block.id),
             onMouseDown: (e) => e.stopPropagation(),
-            className: `relative group cursor-grab active:cursor-grabbing transition-all rounded-lg border
-              ${
-                isSelected
-                  ? "bg-blue-50 border-blue-400 shadow-sm"
-                  : "border-slate-200 hover:bg-slate-50"
-              }
-            `,
           };
 
           const DeleteButton = (
@@ -49,11 +51,14 @@ export default function Preview({
                 e.stopPropagation();
                 deleteBlock(block.id);
               }}
-              className="absolute top-2 right-2 z-10 opacity-0 group-hover:opacity-100
+              className="
+                absolute top-2 right-2 z-10
+                opacity-0 group-hover:opacity-100
                 bg-white border border-slate-300 text-slate-500
                 rounded-full w-7 h-7 flex items-center justify-center
                 shadow-sm hover:text-red-600 hover:border-red-300 hover:bg-red-50
-                transition"
+                transition
+              "
               title="Delete block"
             >
               <svg
@@ -80,7 +85,7 @@ export default function Preview({
                 {...wrapperProps}
                 whileHover={{ scale: 1.01 }}
                 whileTap={{ scale: 0.98 }}
-                className="p-3 text-slate-700"
+                className={`${baseWrapperClass} p-3 text-slate-700`}
               >
                 {DeleteButton}
                 <p className="whitespace-pre-wrap break-words text-sm sm:text-base">
@@ -98,13 +103,7 @@ export default function Preview({
                 {...wrapperProps}
                 whileHover={{ scale: 1.01 }}
                 whileTap={{ scale: 0.98 }}
-                className={`h-32 sm:h-40 flex items-center justify-center text-sm
-                  ${
-                    isSelected
-                      ? "bg-blue-50"
-                      : "bg-slate-200 hover:bg-slate-300"
-                  }
-                `}
+                className={`${baseWrapperClass} h-32 sm:h-40 flex items-center justify-center text-sm`}
               >
                 {DeleteButton}
                 Image Placeholder
@@ -112,13 +111,13 @@ export default function Preview({
             );
           }
 
-          /* ---------- BUTTON BLOCK (RESPONSIVE FIX) ---------- */
+          /* ---------- BUTTON BLOCK ---------- */
           if (block.type === "button") {
             return (
               <motion.div
                 key={block.id}
                 {...wrapperProps}
-                className="relative flex justify-center px-2"
+                className={`${baseWrapperClass} flex justify-center px-2`}
               >
                 {DeleteButton}
 
