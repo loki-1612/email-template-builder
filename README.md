@@ -27,9 +27,6 @@ A responsive web application that allows users to visually build email templates
 ### ✏️ Email Editor
 ![Email Editor](src/assets/images/editor.png)
 
-### 👀 Email Preview
-![Email Preview](src/assets/images/preview.png)
-
 
 ## 🛠 Tech Stack
 - React (Vite)
